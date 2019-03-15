@@ -1,4 +1,4 @@
-package br.com.alura.aula_dois;
+package br.com.alura.aula_2;
 
 public class Aula implements Comparable<Aula> {
 

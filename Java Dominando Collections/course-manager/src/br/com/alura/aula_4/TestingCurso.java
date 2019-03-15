@@ -1,11 +1,11 @@
-package br.com.alura.aula_quatro;
+package br.com.alura.aula_4;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import br.com.alura.aula_dois.Aula;
-import br.com.alura.aula_tres.Curso;
+import br.com.alura.aula_2.Aula;
+import br.com.alura.aula_3.Curso;
 
 /**
  * @author stefany.o.souza

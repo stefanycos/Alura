@@ -1,8 +1,8 @@
-package br.com.alura.aula_sete;
+package br.com.alura.aula_7;
 
-import br.com.alura.aula_dois.Aula;
-import br.com.alura.aula_seis.Aluno;
-import br.com.alura.aula_tres.Curso;
+import br.com.alura.aula_2.Aula;
+import br.com.alura.aula_3.Curso;
+import br.com.alura.aula_6.Aluno;
 
 /**
  * @author stefany.o.souza

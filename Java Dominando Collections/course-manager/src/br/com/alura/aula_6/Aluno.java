@@ -1,4 +1,4 @@
-package br.com.alura.aula_seis;
+package br.com.alura.aula_6;
 
 public class Aluno {
 

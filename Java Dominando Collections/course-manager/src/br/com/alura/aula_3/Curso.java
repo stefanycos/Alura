@@ -1,4 +1,4 @@
-package br.com.alura.aula_tres;
+package br.com.alura.aula_3;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import br.com.alura.aula_dois.Aula;
-import br.com.alura.aula_seis.Aluno;
+import br.com.alura.aula_2.Aula;
+import br.com.alura.aula_6.Aluno;
 
 public class Curso {
 

@@ -1,4 +1,4 @@
-package br.com.alura.aula_cinco;
+package br.com.alura.aula_5;
 
 import java.util.Collection;
 import java.util.HashSet;

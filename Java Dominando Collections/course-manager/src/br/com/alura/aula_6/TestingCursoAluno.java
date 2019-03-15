@@ -1,7 +1,7 @@
-package br.com.alura.aula_seis;
+package br.com.alura.aula_6;
 
-import br.com.alura.aula_dois.Aula;
-import br.com.alura.aula_tres.Curso;
+import br.com.alura.aula_2.Aula;
+import br.com.alura.aula_3.Curso;
 
 public class TestingCursoAluno {
 	
