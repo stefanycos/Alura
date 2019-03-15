@@ -1,4 +1,7 @@
-package br.com.alura.aula_7;
+package br.com.alura.aula_8;
+
+import java.util.Iterator;
+import java.util.Set;
 
 import br.com.alura.aula_2.Aula;
 import br.com.alura.aula_3.Curso;
@@ -6,7 +9,7 @@ import br.com.alura.aula_6.Aluno;
 
 /**
  * @author stefany.o.souza 
- * Description: Nessa aula validamos a importancia do método equals e hashCode para uma Collection do tipo Set.
+ * Description: Nessa aula verificamos outros modos de percorrer um Collection do tipo Set
  *
  */
 public class TestingCursoAluno {
@@ -25,19 +28,18 @@ public class TestingCursoAluno {
 		curso.matricula(a2);
 		curso.matricula(a3);
 
-		curso.getAlunos().forEach(aluno -> {
-			System.out.println(aluno);
-		});
-		validaAlunoMatriculado(curso, a1);
-
-		Aluno allen = new Aluno("Barry Allen", 1);
-		validaAlunoMatriculado(curso, allen);
+		printAlunosIterator(curso);
 
 	}
 
-	public static void validaAlunoMatriculado(Curso curso, Aluno aluno) {
-		String retorno = curso.alunoEstaMatriculado(aluno) ? "Sim" : "Não";
-		System.out.println("Aluno " + aluno.getNome() + " esta matriculado? " + retorno);
+	public static void printAlunosIterator(Curso curso) {
+		Set<Aluno> alunos = curso.getAlunos();
+		Iterator<Aluno> iterator = alunos.iterator();
+		
+		while (iterator.hasNext()) {
+			Aluno aluno = iterator.next();
+			System.out.println(aluno);
+		}
 	}
 
 }
