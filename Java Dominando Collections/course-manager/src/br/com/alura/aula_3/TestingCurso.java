@@ -4,7 +4,7 @@ import br.com.alura.aula_2.Aula;
 
 /**
  * @author stefany.o.souza D
- * Description: Exemplo de restrição de acesso a lista (lista imutavel)
+ * Description: Exemplo de restrição de acesso a lista (lista imutavel).
  *
  */
 public class TestingCurso {
@@ -20,7 +20,7 @@ public class TestingCurso {
 	
 	/**
 	 * @param curso
-	 * Este método retornará ERRO, já que a lista de aulas dentro do curso não pode ser manipulada
+	 * Este método retornará ERRO, já que a lista de aulas dentro do curso não pode ser manipulada diretamente.
 	 * 
 	 */
 	public static void adicionaAula(Curso curso) {

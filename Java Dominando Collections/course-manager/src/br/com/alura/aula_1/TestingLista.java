@@ -8,11 +8,11 @@ import java.util.Collections;
  * @author stefany.o.souza
  * Description: Verificando principios basicos de um arrayList.
  */
-public class TestingLists {
+public class TestingLista {
 
 	public static void main(String[] args) {
-		String aula1 = "Working with ArrayList";
-		String aula2 = "Preparing the environment in all SOs";
+		String aula1 = "Trabalhando com ArrayList.";
+		String aula2 = "Preparando o ambiente.";
 
 		ArrayList<String> aulas = new ArrayList<>();
 		aulas.add(aula1);

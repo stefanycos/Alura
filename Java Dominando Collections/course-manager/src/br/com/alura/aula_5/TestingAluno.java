@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 /**
  * @author stefany.o.souza
- * Description: utilizando Collection
+ * Description: utilizando HashSet da Collection e adicionando método getTotal.
  *  *
  */
 public class TestingAluno {

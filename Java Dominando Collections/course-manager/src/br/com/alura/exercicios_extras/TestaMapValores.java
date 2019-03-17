@@ -3,9 +3,10 @@ package br.com.alura.exercicios_extras;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
-public class TesteMapValores {
+public class TestaMapValores {
 
 	public static void main(String[] args) {
 		Map<String, Integer> nomesParaIdade = new HashMap<>();
@@ -16,6 +17,7 @@ public class TesteMapValores {
 
 		getChaves(nomesParaIdade);
 		getValores(nomesParaIdade);
+		getAssociacoes(nomesParaIdade);
 	}
 
 	public static void getChaves(Map<String, Integer> nomesParaIdade) {
@@ -29,6 +31,13 @@ public class TesteMapValores {
 		Collection<Integer> valores = nomesParaIdade.values();
 		for (Integer idade : valores) {
 			System.out.println(idade);
+		}
+	}
+
+	public static void getAssociacoes(Map<String, Integer> nomesParaIdade) {
+		Set<Entry<String, Integer>> associacoes = nomesParaIdade.entrySet();
+		for(Entry<String, Integer> ass: associacoes){
+			System.out.println("Chave: " + ass.getKey() + " | Valor: " + ass.getValue());
 		}
 	}
 

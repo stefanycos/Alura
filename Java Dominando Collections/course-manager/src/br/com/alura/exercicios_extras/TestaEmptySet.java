@@ -8,7 +8,7 @@ import java.util.Set;
  * @author stefany.o.souza
  *
  */
-public class TestEmptySet {
+public class TestaEmptySet {
 
 	public static void main(String[] args) {
 		/*

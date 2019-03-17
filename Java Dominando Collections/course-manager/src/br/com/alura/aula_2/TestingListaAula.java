@@ -5,14 +5,14 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * @author stefany.o.souza Description: trabalhando com ordenação. Implementando
- *         e utilizando comparator.
+ * @author stefany.o.souza 
+ * Description: trabalhando com ordenação. Implementando e utilizando comparator.
  */
-public class TestaListaAula {
+public class TestingListaAula {
 
 	public static void main(String[] args) {
-		Aula a1 = new Aula("Working with ArrayList", 25);
-		Aula a2 = new Aula("Preparing the environment in all Systems", 30);
+		Aula a1 = new Aula("Trabalhando com ArrayList.", 25);
+		Aula a2 = new Aula("Preparando o ambiente.", 30);
 
 		ArrayList<Aula> aulas = new ArrayList<>();
 		aulas.add(a1);
@@ -37,7 +37,7 @@ public class TestaListaAula {
 
 	/**
 	 * @param aulas
-	 * Ordena aulas utilizando comparing do comparator por tempo
+	 * Ordena aulas, utilizando comparing do comparator por tempo.
 	 */
 	public static void ordenaAulaComCollection(ArrayList<Aula> aulas) {
 		Collections.sort(aulas, Comparator.comparing(Aula::getTempo));
@@ -46,7 +46,7 @@ public class TestaListaAula {
 
 	/**
 	 * @param aulas
-	 * Ordena aulas utilizando comparing do comparator por tempo
+	 * Ordena aulas, utilizando comparing do comparator por tempo.
 	 * 
 	 */
 	public static void ordenaAulaComSort(ArrayList<Aula> aulas) {

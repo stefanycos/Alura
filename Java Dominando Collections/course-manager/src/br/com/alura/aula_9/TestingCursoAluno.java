@@ -4,7 +4,12 @@ import br.com.alura.aula_2.Aula;
 import br.com.alura.aula_3.Curso;
 import br.com.alura.aula_6.Aluno;
 
-public class TesteCursoAluno {
+/**
+ * @author stefany.o.souza
+ * Description: trabalhando com HashMap do Map
+ *
+ */
+public class TestingCursoAluno {
 
 	public static void main(String[] args) {
 		Curso curso = new Curso("Dominado coleções do Java", "Paulo Silvera");

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TesteListas {
+public class TestaListas {
 	public static void main(String[] args) {
 
 		System.out.println("**** ArrayList vs LinkedList ***");

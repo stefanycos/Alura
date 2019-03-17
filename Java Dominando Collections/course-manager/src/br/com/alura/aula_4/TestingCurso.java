@@ -9,7 +9,7 @@ import br.com.alura.aula_3.Curso;
 
 /**
  * @author stefany.o.souza
- * Description: Ordenando uma lista imutavel e adicionando método total
+ * Description: Ordenando uma lista imutavel.
  *
  */
 public class TestingCurso {
@@ -25,6 +25,10 @@ public class TestingCurso {
 		System.out.println(curso);
 	}
 
+	/**
+	 * @param curso
+	 * Para manipular uma lista imutavel é preciso criar uma cópia da mesma.
+	 */
 	public static void ordenaAulas(Curso curso) {
 		List<Aula> aulasImutaveis = new ArrayList<>(curso.getAulas());
 		Collections.sort(aulasImutaveis);

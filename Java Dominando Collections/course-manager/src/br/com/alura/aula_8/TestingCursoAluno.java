@@ -9,7 +9,7 @@ import br.com.alura.aula_6.Aluno;
 
 /**
  * @author stefany.o.souza 
- * Description: Nessa aula verificamos outros modos de percorrer um Collection do tipo Set
+ * Description: Nessa aula verificamos outros modos de percorrer um Collection do tipo Set.
  *
  */
 public class TestingCursoAluno {
@@ -32,6 +32,10 @@ public class TestingCursoAluno {
 
 	}
 
+	/**
+	 * @param curso
+	 * Percorrendo o Set com iterator.
+	 */
 	public static void printAlunosIterator(Curso curso) {
 		Set<Aluno> alunos = curso.getAlunos();
 		Iterator<Aluno> iterator = alunos.iterator();

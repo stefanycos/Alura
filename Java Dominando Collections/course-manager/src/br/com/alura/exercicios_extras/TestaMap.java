@@ -3,7 +3,7 @@ package br.com.alura.exercicios_extras;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TesteMap {
+public class TestaMap {
 
 	public static void main(String[] args) {
 
