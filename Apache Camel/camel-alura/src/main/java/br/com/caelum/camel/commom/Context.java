@@ -1,6 +1,7 @@
 
 package br.com.caelum.camel.commom;
 
+import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -22,6 +23,12 @@ public class Context {
 	
 	public void createContext(SimpleRegistry registry) throws Exception {
 		this.camelContext = new DefaultCamelContext(registry);
+		this.camelContext.addRoutes(builder);
+	}
+	
+	public void createContextWithAMQ() throws Exception {
+		this.camelContext = new DefaultCamelContext();
+		this.camelContext.addComponent("activemq", ActiveMQComponent.activeMQComponent("tcp://localhost:61616"));
 		this.camelContext.addRoutes(builder);
 	}
 
