@@ -4,6 +4,8 @@ import br.com.caelum.camel.class_1.FileRouteBuilder;
 import br.com.caelum.camel.class_2.FileRouteBuilderWithSplitAndFilter;
 import br.com.caelum.camel.class_3.FileRouteBuilderToHttpGet;
 import br.com.caelum.camel.class_3.FileRouteBuilderToHttpPost;
+import br.com.caelum.camel.class_4.RouteBuilderWithSubRoutes;
+import br.com.caelum.camel.class_5.RouteBuilderWithXSLT;
 import br.com.caelum.camel.commom.Context;
 import br.com.caelum.camel.extra_exercises.class_3.RegistryConfig;
 import br.com.caelum.camel.extra_exercises.class_3.RouteHttpPollingNegotiations;
@@ -19,6 +21,10 @@ public class Main {
 		// routeToHttpGet();
 		// usingTimer();
 		// pollingNegotiation();
+
+		// usingSubRoutes();
+		
+		routeWithXSLT();
 	}
 
 	public static void routeFileRoutBuilder() throws Exception {
@@ -64,6 +70,22 @@ public class Main {
 	public static void pollingNegotiation() throws Exception {
 		context = new Context(new RouteHttpPollingNegotiations());
 		context.createContext(new RegistryConfig().getRegistry());
+		context.startContext();
+		sleep();
+		context.stopContext();
+	}
+
+	public static void usingSubRoutes() throws Exception {
+		context = new Context(new RouteBuilderWithSubRoutes());
+		context.createContext();
+		context.startContext();
+		sleep();
+		context.stopContext();
+	}
+	
+	public static void routeWithXSLT() throws Exception {
+		context = new Context(new RouteBuilderWithXSLT());
+		context.createContext();
 		context.startContext();
 		sleep();
 		context.stopContext();
