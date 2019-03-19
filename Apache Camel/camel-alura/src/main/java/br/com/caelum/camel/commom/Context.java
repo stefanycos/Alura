@@ -1,34 +1,40 @@
+
 package br.com.caelum.camel.commom;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.impl.SimpleRegistry;
 
 public class Context {
 
-	private CamelContext context;
+	private CamelContext camelContext;
 	private RouteBuilder builder;
 
 	public Context(RouteBuilder builder) {
 		this.builder = builder;
 	}
 
-	public void criaContexto() throws Exception {
-		this.context = new DefaultCamelContext();
-		this.context.addRoutes(builder);
+	public void createContext() throws Exception {
+		this.camelContext = new DefaultCamelContext();
+		this.camelContext.addRoutes(builder);
+	}
+	
+	public void createContext(SimpleRegistry registry) throws Exception {
+		this.camelContext = new DefaultCamelContext(registry);
+		this.camelContext.addRoutes(builder);
 	}
 
-	public void iniciaContexto() throws Exception {
-		this.context.start();
-		Thread.sleep(1000);
+	public void startContext() throws Exception {
+		this.camelContext.start();
 	}
 
-	public void paraContexto() throws Exception {
-		this.context.stop();
+	public void stopContext() throws Exception {
+		this.camelContext.stop();
 	}
 
-	public CamelContext getContext() {
-		return context;
+	public CamelContext getCamelContext() {
+		return camelContext;
 	}
 
 }
