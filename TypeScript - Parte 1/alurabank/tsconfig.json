@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es6", // versão do compilador
+        "outDir": "app/js", // destino dos arquivos javaScript criados
+        "noEmitOnError": true // não permite gerar os arquivos .js até que os erros de compilação no .ts sejam arrumados
+    },
+    "include": [
+        "app/ts/**/*" // aponta para quais arquivos serão compilados
+    ]
+}
