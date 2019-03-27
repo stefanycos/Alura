@@ -10,8 +10,8 @@ System.register([], function (exports_1, context_1) {
                     this._elemento = $(seletor);
                     this._escapar = escapar;
                 }
-                update(model) {
-                    let template = this.template(model);
+                update(model, tipo_mensagem = 'info') {
+                    let template = this.template(model, tipo_mensagem);
                     if (this._escapar) {
                         template = template.replace(/<script>[\s\S]*?<\/script>/, '');
                     }

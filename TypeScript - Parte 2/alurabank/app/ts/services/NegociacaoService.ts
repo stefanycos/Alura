@@ -2,15 +2,21 @@ import { NegociacaoParcial, Negociacao } from '../models/index';
 
 export class NegociacaoService {
 
+    //obtem uma lista de negocições em JSON, atravez da URL setada
     obterNegociacoes(handler: HandlerFunction) : Promise<any> {
 
         return fetch('http://localhost:8080/dados')
-            .then(res => handler(res))
-            .then(res => res.json())
-            .then((dados: NegociacaoParcial[]) => 
-                dados.map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
+            //handler: é a interface que tem a assinatura de uma função, essa função quando implentada deve receber e retornar uma Response
+            .then(res => handler(res)) //verifica se a resposta é ok, antes de continuar
+            .then(res => res.json()) // converte a resposnta em JSON
+            .then((dados: NegociacaoParcial[]) =>
+                dados.map(dado => new Negociacao(new Date(), dado.vezes, dado.montante)) // adiciona a negociação no map
             )
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err)
+                throw new Error('Não foi possivel importar as negociações.')
+            });
+                
         }
 }
 

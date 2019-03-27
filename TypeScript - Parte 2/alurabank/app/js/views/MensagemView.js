@@ -10,8 +10,8 @@ System.register(["./View"], function (exports_1, context_1) {
         ],
         execute: function () {
             MensagemView = class MensagemView extends View_1.View {
-                template(model) {
-                    return `<p class="alert alert-info">${model}</p>`;
+                template(model, tipo_mensagem = 'info') {
+                    return `<p class="alert alert-${tipo_mensagem}">${model}</p>`;
                 }
             };
             exports_1("MensagemView", MensagemView);

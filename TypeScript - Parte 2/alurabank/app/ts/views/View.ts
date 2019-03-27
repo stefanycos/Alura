@@ -10,8 +10,8 @@ export abstract class View<T> {
     }
 
     //@logarTempoDeExecucao(true)
-    update(model: T) {
-        let template = this.template(model);
+    update(model: T, tipo_mensagem = 'info') {
+        let template = this.template(model, tipo_mensagem);
         if(this._escapar){
             template = template.replace(/<script>[\s\S]*?<\/script>/, '');
         }
@@ -19,7 +19,7 @@ export abstract class View<T> {
         this._elemento.html(template);
     }
 
-    abstract template(model: T): string;
+    abstract template(model: T, tipo_mensagem: string): string;
 
 }
 

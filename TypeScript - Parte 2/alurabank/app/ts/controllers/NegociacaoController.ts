@@ -2,6 +2,7 @@ import { NegociacoesView, MensagemView } from '../views/index';
 import { Negociacoes, Negociacao, NegociacaoParcial } from '../models/index';
 import { domInject, throttle } from '../helpers/decorators/index';
 import { NegociacaoService, HandlerFunction } from '../services/index';
+import { imprime } from '../helpers/index'
 
 export class NegociacaoController {
 
@@ -28,7 +29,7 @@ export class NegociacaoController {
         let data = new Date(this._inputData.val().replace(/-/g, ','))
 
         if (!this._ehDiaUtil(data)) {
-            this._mensagemView.update('Negociações só podem ser feitas em dias uteis!');
+            this._mensagemView.update('Negociações só podem ser feitas em dias uteis!', 'warning');
             return;
         }
 
@@ -37,8 +38,10 @@ export class NegociacaoController {
             parseInt(this._inputQuantidade.val()),
             parseFloat(this._inputValor.val())
         );
-
+        
         this._negociacoes.adiciona(negociacao);
+        
+        imprime(negociacao, this._negociacoes);
 
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update('Negociação adicionada com sucesso!');
@@ -51,6 +54,7 @@ export class NegociacaoController {
 
     @throttle()
     importaDados() {
+        //Arrow function que valida se uma Response, acesso a uma api, retornou ok. Essa função retorna uma Response.
         const isOk: HandlerFunction = (res: Response) => {
             if (res.ok) {
                 return res;
@@ -59,13 +63,27 @@ export class NegociacaoController {
             }
         }
         
+        //faz a requisição para obter as negociações de uma api, implementação da requisição esta no _service
         this._service
             .obterNegociacoes(isOk)
-            .then(negociacoes => {
-                negociacoes.forEach((negociacao: Negociacao) => 
+            .then(negociacoesParaImportar => {
+                
+                //recebe as negociações atuais
+                const negociacoesJaImportadas = this._negociacoes.paraArray();
+                
+                //faz a filtragem para validar se a negociação já existe na lista
+                negociacoesParaImportar
+                    .filter((negociacao: Negociacao) => 
+                        !negociacoesJaImportadas.some(jaImportada => 
+                            negociacao.ehIgual(jaImportada)))
+                    .forEach((negociacao: Negociacao) => 
+                    
                     this._negociacoes.adiciona(negociacao));
-                this._negociacoesView.update(this._negociacoes);
-            });     
+                    this._negociacoesView.update(this._negociacoes);
+            })
+            .catch( err =>{
+                this._mensagemView.update(err.message, 'danger');
+            });
      }
 }
 
