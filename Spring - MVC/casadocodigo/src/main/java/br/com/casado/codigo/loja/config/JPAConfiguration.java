@@ -26,18 +26,17 @@ public class JPAConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
-		dataSource.setUrl("jdbc:mydql//localhost:3306/casadocodigo");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		factoryBean.setDataSource(dataSource);
 		
 		Properties pros = new Properties();
 		pros.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		pros.setProperty("hibernate.show_sql", "true");
-		pros.setProperty("hibernate.hbm2dll.auto", "update");
+		pros.setProperty("hibernate.hbm2ddl.auto", "update");
 		factoryBean.setJpaProperties(pros);
 		
-		factoryBean.setPackagesToScan("br.com.casadocodigo.loja.models");
-		
+		factoryBean.setPackagesToScan("br.com.casado.codigo.loja.models");
 		return factoryBean;
 	}
 	

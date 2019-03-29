@@ -9,10 +9,8 @@ import br.com.casado.codigo.loja.controllers.HomeController;
 import br.com.casado.codigo.loja.dao.ProdutoDAO;
 
 /**
- * @author stefany.o.souza
- * @ComponentScan - Configura o caminho (pacote) onde os controllers estão, podemos passar um array de Strings com os nomes dos pacotes
- * ou um aaray de classes, passar a classe é melhor, pois o SpringMVC pega os pacotes automaticamente a partir das classes,
- * se colocassemos String e houvesse alguma alteração no nome do pacote, teriamos que lembrar de alterar aqui também.
+ * @author Stefany Souza
+ *
  */
 @EnableWebMvc
 @ComponentScan(basePackageClasses= {HomeController.class, ProdutoDAO.class})
@@ -20,10 +18,8 @@ public class AppWebConfiguration {
 
 	/**
 	 * @return
-	 * 
-	 * (setPrefix) - Define a localização das views
-	 * (setSuffix) - Define a extensão das views
-	 * @Bean transforma-o em um Bean, assim será gerenciado pelo Spring.
+	 * setPrefix: define a localização das views
+	 * setSuffix: define a extensão das views
 	 * 
 	 */
 	@Bean
