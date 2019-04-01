@@ -9,6 +9,8 @@
 	<title>Livros de desenvolvimento de software e muito mais</title>
 </head>
 <body>
+	<h1>Lista de Produtos</h1>
+	<p>${sucesso }</p>
 	<table>
 		<tr>
 			<td>Título</td>
