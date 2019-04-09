@@ -34,7 +34,7 @@ public class ProdutosController {
 
 	/*
 	 * Binder responsavel por conectar duas coisas, nesse caso, os dados do
-	 * formulário com o objeto da classe Produto
+	 * formulário com o objeto da classe Produto 
 	 */
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
