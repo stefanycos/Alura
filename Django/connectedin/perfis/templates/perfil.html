@@ -4,11 +4,15 @@
     <div class="col-lg-12">
         <h2 style="margin-top: 0">{{ perfil.nome }}</h2>
         <address>
-            <strong>{{ perfil.nome_empresa }}</strong><br>
-            <abbr title="Telefone">Telefone:</abbr>{{ perfil.telefone }}<br>
-            <a href="mailto:{{ perfil.email }}">{{ perfil.email }}</a>
+            <strong>Empresa:  </strong>{{ perfil.nome_empresa }}<br>
+            <strong><abbr title="Telefone">Telefone:  </abbr></strong>{{ perfil.telefone|upper }}<br>
+            <strong>E-mail:  </strong><a href="mailto:{{ perfil.email }}">{{ perfil.email }}</a>
         </address>
-        <a href="{% url 'convidar' perfil.id %}">Convidar</a>
+        {% if ja_eh_contato %}
+            <div class="well well-sm">Vocês estão conectados!</div>
+        {% else %}
+            <a href="{% url 'convidar' perfil.id %}">Convidar</a>
+        {% endif %}
     </div>
 </div>
 {%  endblock %}
