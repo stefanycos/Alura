@@ -1,17 +1,25 @@
 # coding=utf-8
 
 from django.db import models
+from django.contrib.auth.models import User
 
 class Perfil(models.Model):
 
     #modelo a ser persistido no banco de dados
     nome = models.CharField(max_length=255, null=False)
-    email = models.CharField(max_length=255, null=False)
     telefone = models.CharField(max_length=15, null=False)
     nome_empresa = models.CharField(max_length=255, null=False)
     
     #se relaciona com ele mesmo
     contatos = models.ManyToManyField('self') 
+
+    #relacionamento bidirecional, perfil pode usar user e user pode usar perfil
+    usuario = models.OneToOneField(User, related_name="perfil")
+
+    #o email poderá ser acessado atraves de perfil.email, mas na verdade estamos acessando perfil.usuario.email
+    @property
+    def email(self):
+        return self.usuario.email
 
     def convidar(self, perfil_convidado):
         convite = Convite(solicitante=self, convidado=perfil_convidado)
