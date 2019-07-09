@@ -18,7 +18,7 @@
 </head>
 <body>
 	<!-- enctype="multipart/form-data": habilita o multipart para enviar arquivos pelo form -->
-	<!-- s: prefixo da tagLib | mvcUrl: usado para adicionar o path do controller | PC#gravar: nome do controller (PC: Produto Controller) e método que vai incocar (gravar) | build:monta a rota -->
+	<!-- s: prefixo da tagLib | mvcUrl: usado para adicionar o path do controller | PC#gravar: nome do controller (PC: Produto Controller) e mï¿½todo que vai invocar (gravar) | build:monta a rota -->
 	<form:form action= "${s:mvcUrl('PC#gravar').build()}" method="POST" commandName="produto" enctype="multipart/form-data" >
 		<div>
 			<label>Titulo:</label>
@@ -26,17 +26,17 @@
 			<form:errors path="titulo" />
 		</div>
 		<div>
-			<label>Descrição:</label>
+			<label>Descriï¿½ï¿½o:</label>
 			<form:textarea rows="10" cols="20" path="descricao" />
 			<form:errors path="descricao" />
 		</div>
 		<div>
-			<label>Páginas:</label>
+			<label>Pï¿½ginas:</label>
 			<form:input  path="paginas" />
 			<form:errors path="paginas" />
 		</div>
 		<div>
-			<label>Data de Lançamento</label>
+			<label>Data de Lanï¿½amento</label>
 			<form:input path="dataLancamento" />
 			<form:errors path="dataLancamento"/>
 		</div>
@@ -48,7 +48,7 @@
 			</div>
 		</c:forEach>
 		<div>
-			<label>Sumário</label>
+			<label>Sumï¿½rio</label>
 			<input name="sumario" type="file" />
 		</div>
 		<button type="submit">Cadastrar</button>

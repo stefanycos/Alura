@@ -14,11 +14,12 @@
 <body>
 	<h1>Lista de Produtos</h1>
 	<p>${sucesso }</p>
+	<p>${falha }</p>
 	<table>
 		<tr>
-			<td>Título</td>
-			<td>Descrição</td>
-			<td>Páginas</td>
+			<td>Tï¿½tulo</td>
+			<td>Descriï¿½ï¿½o</td>
+			<td>Pï¿½ginas</td>
 		</tr>
 
 		<c:forEach items="${produtos}" var="produto">
