@@ -1,2 +1,2 @@
 # Alura
-Repository used to post my Alura course codes.
+Repository used to post my codes from Alura courses.
