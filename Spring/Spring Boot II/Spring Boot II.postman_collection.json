@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "175b3bad-0c0e-4aec-9b74-d22d78348559",
+		"name": "Spring Boot II",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get topicos - paginação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/topicos?page=0&size=3&sort=id,desc&sort=mensagem,asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"topicos"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						},
+						{
+							"key": "sort",
+							"value": "id,desc"
+						},
+						{
+							"key": "sort",
+							"value": "mensagem,asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request autenticação",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"aluno@email.com\",\n\t\"senha\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Srping actuator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator"
+					]
+				},
+				"description": "Utilizado para obter informações sobre o estado da nossa API."
+			},
+			"response": []
+		}
+	]
+}
