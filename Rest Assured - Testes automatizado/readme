@@ -1,0 +1,6 @@
+Nível: Intermediario
+Carga horaria: 12H
+
+Rodar servidor leilões:
+  -- No prompt de comando dentro da pastaa leiloes rodar
+    - caminho_apache_ant\bin\ant jetty.run
