@@ -1,5 +1,7 @@
 package br.com.alura.aula_06_builder;
 
+import java.util.Calendar;
+
 import br.com.alura.aula_06_builder.models.ItemDaNota;
 import br.com.alura.aula_06_builder.models.NotaFiscal;
 import br.com.alura.aula_06_builder.models.NotaFiscalBuilder;
@@ -14,7 +16,7 @@ public class TestaNotaFiscal {
 			   .comItem(new ItemDaNota("Spring Boot", 70.50))
 			   .comItem(new ItemDaNota("Spring MVC", 100.50))
 			   .comObservacao("Obs qualquer")
-			   .comDataAtual()
+			   .naData(Calendar.getInstance())
 			   .build();
 		
 		System.out.println(notaFiscal);
