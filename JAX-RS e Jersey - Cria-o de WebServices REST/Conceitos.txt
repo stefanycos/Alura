@@ -1,0 +1,29 @@
+Idempotente
+Idempotente é quando uma requisição é feita várias vezes sem alterar o servidor.
+
+*******************************************************************************************
+
+GET - recebe a representação, não altera o servidor, ou seja, é um verbo idempotente (faz requisições idempotentes).
+
+POST - envia a representação, corre risco de criar duas vezes o mesmo recurso, o servidor pode processar os dados novamente. O método POST pode ter varios resultados diferentes então ele não é idempotente.
+
+DELETE - também é idempotente.
+
+PUT - O verbo PUT é idempotente. Toda vez que executado, o resultado é o mesmo: a alteração do recurso (seja ele qual for) anterior pelo recurso atual, através da representação passada pelo cliente.
+
+PATCH - O PATCH serve para atualizar um pedaço de um recurso.
+
+*******************************************************************************************
+
+Interface Uniforme
+
+É, basicamente, um contrato para comunicação entre clientes e servidor. São pequenas regras para deixar um componente o mais genérico possível, o tornando muito mais fácil de ser refatorado e melhorado.
+
+A vantagem de usar uma interface uniforme é esse padrão que faz com que todas as aplicações, todos os programas utilizando essa API, tenham em comum essas características, todas elas sabem entender o que uma requisição HTTP está fazendo.
+
+*******************************************************************************************
+
+JAXB
+O JAXB é o serializador padrão da plataforma Java SE, fazendo o consumo e criação de xml menos trabalhosos.
+@XmlRootElement - essa anotação indica que esse elemento é um elemento valido do XML Jaxb
+@XmlAccessorType(XmlAccessType.FIELD) - essa anotação indica que todos os campos serão serializados por padrão
