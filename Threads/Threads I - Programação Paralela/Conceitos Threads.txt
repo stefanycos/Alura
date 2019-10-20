@@ -1,0 +1,37 @@
+JVM e Threads
+A JVM faz automaticamente o uso de threads para coletar objetos abandonados na memória. 
+Essas threads (que na verdade são várias) chamamos de Garbage Collector (que traduzido do inglês, significa "coletor de lixo" ou "lixeiro"). Ele é responsável por jogar fora todos os objetos que não estão sendo referenciados por nenhum outro objeto.
+
+Reparem que não foi necessário utilizar alguma biblioteca extra para trabalhar com threads. Quando o Java foi lançado, isso foi um grande diferencial pois a JVM já veio com suporte nativo para trabalhar com threads. Além disso, a máquina virtual mapeia os threads dela para threads ou processos do sistema operacional. Ou seja, se seu sistema operacional dá suporte à execução em paralelo, muito provável que podemos realmente executar código em paralelo. Claro que isso também depende da implementação da JVM em si, mas hoje em dia, pode ter certeza, se você usa a máquina virtual da Oracle ou da IBM, que essas máquinas virtuais mapeiam os threads para o sistema operacional. Ou seja, com Java em mãos, nada impede de realmente aproveitar a execução em paralelo.
+
+**************************************************************************************************************************
+
+Ordem de Execução das Threads
+A  ordem de execução depende puramente do escalonador de threads (scheduler). É ele que agenda a execução da thread e define quanto tempo cada thread pode executar.
+
+**************************************************************************************************************************
+
+E se o sistema operacional por baixo não desse suporte ao multi-threading nativo? Ai entram as threads que também se chamam de Green Threads. Nesse caso a JVM simularia um ambiente multi-threaded mas na verdade só pode ter um processo ou thread executando ao mesmo tempo.
+
+Em outras palavras as Green Threads emulam um ambientes multi-threaded sem depender de quaisquer capacidades de sistema operacional nativo. As threads nativas realmente usam a capacidade nativa do sistema operacional para gerenciar processos multi-threaded.
+
+**************************************************************************************************************************
+
+Thread safe significa que o código funciona corretamente mesmo com vários threads compartilhando o objeto
+
+**************************************************************************************************************************
+
+NEW Uma thread foi criada mas ainda não foi iniciada.
+RUNNABLE A thread está rodando dentro da JVM.
+BLOCKED A thread foi bloqueada pois não conseguiu pegar a chave.
+WAITING A thread está esperando pois foi chamado this.wait().
+TIMED_WAITING A thread está esperando pois foi chamado this.wait(milis).
+TERMINATED A thread está finalizada.
+
+**************************************************************************************************************************
+
+Daemon Thread
+Threads daemon são como prestadores de serviços para outras threads. Elas são usadas para dar apoio à tarefas e só são necessárias rodar quando as threads "normais" ainda estão sendo executadas. Uma thread daemon não impede a JVM de terminar desde que não existem mais threads principais em execução. Um exemplo de uma thread daemon é o coletor de lixo da JVM (Garbage Collector) ou a nossa limpeza do banheiro :)
+
+**************************************************************************************************************************
+

@@ -1,0 +1,10 @@
+package br.com.alura.fourth;
+
+import java.util.Scanner;
+
+public class ScannerTestOne {
+
+	private static void readCSVFile() {
+		Scanner scanner = new Scanner(new File("contas.csv")));
+	}
+}

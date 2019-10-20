@@ -1,0 +1,10 @@
+package br.com.alura.models;
+
+public class Conta {
+
+	private Double balance;
+	private Integer agency;
+	private Integer number;
+	private String holder;
+
+}

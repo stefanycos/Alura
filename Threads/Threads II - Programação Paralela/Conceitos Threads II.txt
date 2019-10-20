@@ -1,0 +1,53 @@
+Thread Pool
+
+Um pool de threads é um gerenciador de objetos do tipo Thread. Ele gerencia uma quantidade de threads estabelecida, que fica aguardando por tarefas fornecidas pelos clientes. A sua grande vantagem é que além de controlarmos a quantidade de threads disponível para uso dos clientes, também podemos fazer o reuso de threads por clientes diferentes, não tendo o gasto de CPU de criar uma nova thread para cada cliente que chega no servidor.
+
+****************************************************************************************************************
+
+Os tipos de pool's de thread são newFixedThreadPool, newCachedThreadPool e newSingleThreadExecutor.
+
+A newFixedThreadPool é o pool de threads em que definimos previamente a quantidade de threads que queremos utilizar. Assim, se por exemplo estabelecermos que queremos no máximo 4 threads, este número nunca será extrapolado e elas serão reaproveitadas.
+Através do nosso ExecutorService podemos atender no máximo 2 clientes. Se precisarmos de mais uma thread, o service bloqueia a execução e espera até um outro cliente devolva uma thread.
+** ExecutorService poolDeThreads = Executors.newFixedThreadPool(2);
+
+A newCachedThreadPool é o pool de threads que cresce dinamicamente de acordo com as solicitações. É ideal quando não sabemos o número exato de quantas threads vamos precisar. O legal deste pool é que ele também diminuí a quantidade de threads disponíveis quando uma thread fica ociosa por mais de 60 segundos.
+** ExecutorService poolDeThreads = Executors.newCachedThreadPool();
+** poolDeThreads.execute(distribuirTarefas);
+
+A newSingleThreadExecutor é o pool de threads que só permite uma única thread.
+
+****************************************************************************************************************
+Join
+** threadXPTO.join();
+
+É utilizado para coordenar a execução de duas threads, podemos deixar uma thread aguardando a execução da outra.
+Quando uma thread t2 chama t1.join(), significa que t2 vai esperar t1 finalizar. 
+** t2 vai se "juntar" ao t1, isso é esperar a finalização do t1.
+
+thread.join(with millis time) - Isso significa que vamos esperar 30s para se "juntar" a outra thread. Depois dos 30s continuaremos, mesmo se a outra thread não tiver finalizado ainda.
+** thread.join(30000);
+
+****************************************************************************************************************
+
+Volatile
+O problema é que uma thread pode cachear variáveis e é muito provável que isso acontecerá! Cada thread é mapeada para uma thread nativa do sistema operacional, e esses caches nativos vão aproveitar o cache da CPU. Enquanto o nosso atributo fica na memória principal, a thread o guarda no cache da CPU!
+
+Então, como podemos dizer que não queremos usar esse cache? Isso é muito fácil e o Java possui uma palavra chave para tal: volatile.
+O nosso atributo será volatile, que significa que cada thread deve acessar diretamente a memória principal.
+**private volatile boolean estaRodando = false;  OU
+**private AtomicBoolean estaRodando; Estamos criando um variavel do tipo volatile
+
+****************************************************************************************************************
+Runnable X Callable
+
+- A interface Callable é uma alternativa a interface Runnable
+- As interfaces Runnable e Callable servem para definir uma tarefa de uma thread.
+- A diferença do Callable é que pode retornar algo e jogar qualquer exceção.
+- Para usar um Callable com threads sempre precisamos de um pool de threads (ExecutorService).
+- O método submit(..) do pool recebe um Callable retorna um Future
+- O Future representa o resultado da execução que talvez não tenha terminado ainda
+
+
+
+
+

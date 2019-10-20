@@ -1,0 +1,10 @@
+package br.com.alura.fourth;
+
+public class PropertiesTest {
+	
+	
+	private static void createProperties(){
+		
+	}
+
+}

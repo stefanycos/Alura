@@ -1,0 +1,34 @@
+package br.com.alura.second;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+
+public class WriterFileTest {
+	
+	public static void main(String[] args) {
+		
+	}
+
+	private static BufferedWriter writeFile() throws IOException {
+		
+		OutputStream outputStream = new FileOutputStream("loremTest.txt");
+		Writer writer = new OutputStreamWriter(outputStream);
+		BufferedWriter bufferedWriter =  new BufferedWriter(writer);
+		
+		bufferedWriter.close();
+		
+		FileOutputStream fileOutputStream = new FileOutputStream("loremTest.txt");
+		OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
+		return new BufferedWriter(outputStreamWriter);
+	}
+
+	private static void printFile(BufferedWriter writer) throws IOException {
+		
+	}
+
+}

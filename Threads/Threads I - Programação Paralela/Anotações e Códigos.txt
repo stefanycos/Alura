@@ -1,0 +1,22 @@
+Pegar a instancia da Thread atual (aquela que está sendo executada):
+** Thread atual = Thread.currentThread();
+
+***************************************************************
+
+Modificador para Threads usado nos métodos
+synchronized (objeto) {
+	//esse bloco pode ser executado por uma thread apenas
+}
+
+***************************************************************
+
+Operação Atômica
+Cuja execução não pode ser interrompida na metade.
+Todo o bloco synchronized será executado de uma vez só, de maneira atômica. Até pode ser que o escalonador para a thread no meio, para alguma outra thread executar uma outra coisa, mas nenhuma outra thread pode entrar nesse bloco enquanto aquela com a chave não sai.
+
+***************************************************************
+
+Definir thread como uma Daemon Thread
+Thread thread = new Thread(runnable);
+thread.setDaemon(true);
+thread.start();

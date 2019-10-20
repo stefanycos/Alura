@@ -1,0 +1,50 @@
+package br.com.alura.second;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+
+public class FileCopier {
+
+	public static void main(String[] args) throws Exception {
+	}
+
+	private static BufferedReader readerFile() throws Exception {
+		InputStream inputStream = new FileInputStream("lorem.txt");
+		Reader reader = new InputStreamReader(inputStream);
+		return new BufferedReader(reader);
+	}
+
+	private static BufferedWriter fileWriter() throws Exception {
+		OutputStream outputStream = new FileOutputStream("lorem2.txt");
+		Writer writer = new OutputStreamWriter(outputStream);
+		return new BufferedWriter(writer);
+	}
+
+	private static void writeInConsole() throws Exception {
+		BufferedReader readerFile = readerFile();
+		String line = readerFile.readLine();
+
+		while (line != null) {
+			System.out.println(line);
+			line = readerFile.readLine();
+		}
+
+		readerFile.close();
+	}
+	
+	private static void writeInIFile() throws Exception{
+		BufferedReader readerFile = readerFile();
+	}
+	
+	
+
+}

@@ -1,0 +1,4 @@
+	System.out.println("----- Initializing Server -----");
+		ServerSocket server = new ServerSocket(12345);
+
+		ExecutorService threadPool = Executors.newFixedThreadPool(1);

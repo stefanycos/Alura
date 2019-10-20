@@ -1,0 +1,11 @@
+package br.com.alura.fourth;
+
+import java.util.Properties;
+
+public class PropertiesTest {
+
+	private static void createProperties() {
+		Properties properties = new Properties();
+	}
+
+}

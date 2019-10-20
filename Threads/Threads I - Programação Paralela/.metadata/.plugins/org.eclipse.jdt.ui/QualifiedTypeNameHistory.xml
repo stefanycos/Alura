@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.InterruptedException"/>
+<fullyQualifiedTypeName name="br.com.alura.threads.ImprimeString"/>
+<fullyQualifiedTypeName name="br.com.alura.threads.TarefaMultiplicacao"/>
+<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="br.com.alura.threads.numeros.TarefaImprimeNumeros"/>
+<fullyQualifiedTypeName name="br.com.alura.banheiro.Banheiro"/>
+<fullyQualifiedTypeName name="java.util.concurrent.locks.ReentrantLock"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="br.com.alura.threads.listas.TarefaAdicionarElemento"/>
+<fullyQualifiedTypeName name="br.com.alura.banheiro.BanheiroSync"/>
+<fullyQualifiedTypeName name="br.com.alura.banheiro.TarefaLimpeza"/>
+<fullyQualifiedTypeName name="br.com.alura.threads.listas.Lista"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+</qualifiedTypeNameHistroy>

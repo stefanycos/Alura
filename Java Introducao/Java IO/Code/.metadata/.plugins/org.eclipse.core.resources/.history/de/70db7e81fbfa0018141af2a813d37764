@@ -1,0 +1,9 @@
+package br.com.alura.fourth;
+
+public class ScannerWithFormat {
+	
+	private static final String LANGUAGE = "pt";
+	private static final String LOCALE = "BR";
+	
+
+}

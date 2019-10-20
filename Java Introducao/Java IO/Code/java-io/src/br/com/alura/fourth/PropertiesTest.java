@@ -1,0 +1,33 @@
+package br.com.alura.fourth;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Properties;
+
+public class PropertiesTest {
+
+	public static void main(String[] args) throws Exception {
+		createProperties();
+		readProperties();
+	}
+
+	private static void createProperties() throws IOException {
+
+		Properties dataBaseProp = new Properties();
+		dataBaseProp.setProperty("login", "root");
+		dataBaseProp.setProperty("password", "987ksu1");
+		dataBaseProp.store(new FileWriter("conf_db.properties"), "MySQL Access Properties");
+	}
+
+	private static void readProperties() throws Exception {
+		Properties properties = new Properties();
+		properties.load(new FileReader("conf_db.properties"));
+
+		String login = properties.getProperty("login");
+		String password = properties.getProperty("password");
+
+		System.out.println("Login: " + login + " | Password: " + password);
+	}
+
+}
