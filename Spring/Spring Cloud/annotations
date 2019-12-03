@@ -1,0 +1,17 @@
+Service discovery e Service registry
+** service registry é um servidor central, onde todos os microsserviços ficam cadastrados (nome e IP/porta)
+** service discovery é um mecanismo de descoberta do IP do microsserviço pelo nome
+*** dessa forma, nenhum microsserviço fica acoplado ao outro pelo IP/porta
+
+Para saber mais
+Spring Config Server é uma implementação do servidor do projeto Spring Cloud
+Client Side Load Balancing (CSLB) é o cliente HTTP que decide qual microsserviço recebe a requisição
+
+Serviços
+
+config-server --> servidor de configurações, onde configuramos a localização dos arquivos de configurações das aplicações, que podem estar em disco, git, VM e etc.
+eureka-server --> registro de serviços (servidor central, onde os microserviços se registram), configuramos a porta que o servidor ficará disponivel para que os outros serviços consigam se registrar.
+provider-service --> serviço do fornecedor, armazena os dados da compra no BD e retorna os dados dos produto e fornecedores disponiveis. Configurado para se registrar no eureka-server, assim que é inicializado e também para buscar as configurações de BD no config-server. 
+store-service --> serviço de loja, onde o cliente realiza os pedidos, configurado para se registrar no eureka-server, assim que é inicializado. Busca os dados e realiza a compra no provider-service, atuando como CSLB.
+	** Com rest template precisamos injetar uma instancia Rest Template e anotar com @LoadBalance para habilitar o CSLB
+	** Com FeignClient o processo de LoadBalance é implicito.

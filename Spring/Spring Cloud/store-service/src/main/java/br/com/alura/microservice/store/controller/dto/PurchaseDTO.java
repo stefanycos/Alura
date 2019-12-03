@@ -4,12 +4,14 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-public class BuyDTO {
+@ToString
+public class PurchaseDTO {
 
 	private List<ItemDTO> itens; 
 	
-	private AddressDTO addressDTO;
+	private AddressDTO address;
 }
