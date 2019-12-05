@@ -57,7 +57,7 @@ public class OrderService {
 				
 				OrderItem pedidoItem = new OrderItem();
 				pedidoItem.setProduct(product);
-				pedidoItem.setQuantity(item.getQuantidade());
+				pedidoItem.setQuantity(item.getQuantity());
 				return pedidoItem;
 				}).collect(Collectors.toList());
 		

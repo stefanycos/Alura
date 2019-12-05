@@ -15,3 +15,5 @@ provider-service --> serviço do fornecedor, armazena os dados da compra no BD e
 store-service --> serviço de loja, onde o cliente realiza os pedidos, configurado para se registrar no eureka-server, assim que é inicializado. Busca os dados e realiza a compra no provider-service, atuando como CSLB.
 	** Com rest template precisamos injetar uma instancia Rest Template e anotar com @LoadBalance para habilitar o CSLB
 	** Com FeignClient o processo de LoadBalance é implicito.
+	
+*** Em ambos serviços, provider-service e store-service, foi usado o Spring Cloud Sleuth para adicionar um correlation-id, assim é possivel rastrear a requisição do inicio ao fim, pois o correlation-id é o mesmo do inicio ao fim, mesmo em diferentes aplicações. Para fazer a agregação dos logs dos serviços foi usado o Papertrail (https://papertrailapp.com) configurado juntamente com Logback.

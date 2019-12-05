@@ -1,5 +1,7 @@
 package br.com.alura.microservice.store.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpMethod;
@@ -15,6 +17,8 @@ import br.com.alura.microservice.store.service.models.Purchase;
 
 @Service
 public class PurchaseService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PurchaseService.class);
 
 	@Autowired
 	private RestTemplate client;
@@ -41,17 +45,20 @@ public class PurchaseService {
 	}
 
 	public Purchase purchase(PurchaseDTO requestBody) {
+		LOGGER.info("Seraching data at provider service, state [{}]", requestBody.getAddress().getState());
 		ProviderInfoDTO providerInfoDTO = providerClient.getInfoByState(requestBody.getAddress().getState());
 
-		System.out.println(providerInfoDTO);
+		LOGGER.info("Data retrieved [{}]", providerInfoDTO);
 
 		OrderInfoDTO order = providerClient.realizeOrder(requestBody.getItens());
-
+		
+		LOGGER.info("Creating order at provider service...");
 		Purchase purchase = Purchase.builder() // @formatter:off
 								.address(requestBody.getAddress().toString())
 								.orderId(order.getId())
 								.preparationTime(order.getPreparationTime()).build(); // @formatter:on
-
+		
+		LOGGER.info("Order created successfully!");
 		return purchase;
 	}
 
