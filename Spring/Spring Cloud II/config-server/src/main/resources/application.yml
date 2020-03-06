@@ -1,0 +1,22 @@
+
+server:
+   port: 8888
+
+spring:
+   profiles:
+      active: native
+   cloud:
+      config:
+         server:
+            native: 
+               # yml files location (C:\microservice-repo)
+               search-locations: file:///C:/microservice-repo
+
+# fetch from git hub configuraion        
+# spring:
+ # cloud:
+  #    config:
+   #      server:
+    #        git: 
+     #          uri: https://github.com/stefanycos/microservice-repo/tree/master/alura/spring-cloud
+      #         search-paths: provider

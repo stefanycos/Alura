@@ -1,0 +1,34 @@
+Service discovery e Service registry
+** service registry é um servidor central, onde todos os microsserviços ficam cadastrados (nome e IP/porta)
+** service discovery é um mecanismo de descoberta do IP do microsserviço pelo nome
+	*** dessa forma, nenhum microsserviço fica acoplado ao outro pelo IP/porta
+** o arquivo bootstrap.yml é carregado em um contexto com maior precedência, chamado de Bootstrap Application Context. É neste contexto que o Spring Cloud Config Client se conecta ao configuration server, baixa e disponibiliza as variáveis de ambiente para o Spring Application Context, que é o contexto da nossa aplicação.
+
+Para saber mais
+Spring Config Server é uma implementação do servidor do projeto Spring Cloud
+Client Side Load Balancing (CSLB) é o cliente HTTP que decide qual microsserviço recebe a requisição
+
+Serviços
+
+config-server --> servidor de configurações, onde configuramos a localização dos arquivos de configurações das aplicações, que podem estar em disco, git, VM e etc.
+	** http://localhost:8888/{service-name}/default (/default ou outro profile) -> lista as configurações
+
+eureka-server --> registro de serviços (servidor central, onde os microserviços se registram), configuramos a porta que o servidor ficará disponivel para que os outros serviços consigam se registrar.
+	** http://localhost:8761/eureka/apps -> lista aplicações que já se registraram no eureka
+
+provider-service --> serviço do fornecedor, armazena os dados da compra no BD e retorna os dados dos produto e fornecedores disponiveis. Configurado para se registrar no eureka-server, assim que é inicializado e também para buscar as configurações de BD no config-server. 
+
+store-service --> serviço de loja, onde o cliente realiza os pedidos, configurado para se registrar no eureka-server, assim que é inicializado. Busca os dados e realiza a compra no provider-service, atuando como CSLB.
+	** Com rest template precisamos injetar uma instancia Rest Template e anotar com @LoadBalance para habilitar o CSLB
+	** Com FeignClient o processo de LoadBalance é implicito.
+	
+*** Em ambos serviços, provider-service e store-service, foi usado o Spring Cloud Sleuth para adicionar um correlation-id, assim é possivel rastrear a requisição do inicio ao fim, pois o correlation-id é o mesmo do inicio ao fim, mesmo em diferentes aplicações. Para fazer a agregação dos logs dos serviços foi usado o Papertrail (https://papertrailapp.com) configurado juntamente com Logback.
+
+
+- Circuit Breaker é um pattern de microserviços, sua função é rastrear e monitorar falhas, desta forma se uma falha ocorre por mais de um determinado número de vezes o sistema consegue se proteger, se por exemplo tivermos um sistema com 3 instancias, onde em uma dessa instancias o tempo de resposta excede 2ms (o limite para esse sistema), as requisições para essa instancia serão interrompidas por um determinado tempo.
+
+- Fallback é para onde as requisições que falharam serão encaminhadas, uma alternativa atrelada ao Circuit Breaker.
+
+- O Circuit Breaker implementado pelo Hystrix executa o processamento em uma thread separada. Quando o tempo limite é excedido, o Hystrix mata a execução da thread e, caso configurado, repassa a execução para o método de Fallback, de forma que este possa implementar livremente um tratamento de erro.
+
+- Bulkhead é um pattern de microserviços, sua função é isolar os elementos do microserviços em pools diferentes, sendo assim se houver falha outras partes continuarão funcionando, por exemplo se um endpoint por algum motivo estiver sobrecarregado, todos os outros continuarão funcionando.
