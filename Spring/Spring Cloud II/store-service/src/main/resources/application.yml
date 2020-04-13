@@ -10,3 +10,13 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+      
+# get user information - configuration for requesting user authentication
+security:
+ oauth2:
+  resource:
+   user-info-uri: http://localhost:8088/api/users
+
+# enable the share of configuration between spring and hystrix threads   
+hystrix:
+ shareSecurityContext: true
